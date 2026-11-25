@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BIOMA - Centro de Investigación en Bioprospección y Microbiología Ambiental.">
+  <title>BIOMA | Investigación y naturaleza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest: #164b35;
+      --green: #397653;
+      --sage: #dce8c2;
+      --cream: #f6f3e9;
+      --earth: #9b805c;
+      --ink: #24372c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      border-bottom: 1px solid #ffffff35;
+    }
+
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .brand small {
+      display: block;
+      font: 9px 'DM Sans', sans-serif;
+      letter-spacing: 2px;
+    }
+
+    nav { display: flex; gap: 28px; font-size: 13px; }
+
+    nav a:hover { color: var(--sage); }
+
+    .hero {
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      padding: 150px 10% 100px;
+      color: white;
+      background:
+        linear-gradient(90deg, #102f25e8, #102f2550),
+        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2000') center/cover;
+    }
+
+    .hero-content { max-width: 720px; }
+
+    .eyebrow {
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    h1 { font-size: clamp(42px, 6vw, 72px); line-height: 1.12; }
+
+    .hero p {
+      margin: 25px 0 35px;
+      max-width: 560px;
+      color: #e8eee7;
+      font-size: 16px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--sage);
+      color: var(--forest);
+      padding: 13px 25px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    section { padding: 90px 10%; }
+
+    .section-label {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h2 {
+      color: var(--forest);
+      font-size: clamp(30px, 4vw, 43px);
+      line-height: 1.2;
+      margin: 14px 0 22px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .intro p { color: #617064; }
+
+    .research { background: #eaeedf; }
+
+    .research-header {
+      max-width: 650px;
+      margin-bottom: 38px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .research-card {
+      background: var(--cream);
+      padding: 28px 22px;
+      border-bottom: 3px solid var(--green);
+      min-height: 210px;
+    }
+
+    .research-card span {
+      font-size: 30px;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .research-card h3 {
+      font-size: 19px;
+      color: var(--forest);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .research-card p {
+      color: #667368;
+      font-size: 13px;
+    }
+
+    .quote {
+      background: var(--forest);
+      color: white;
+      text-align: center;
+      padding: 75px 10%;
+    }
+
+    .quote h2 { color: white; }
+
+    .quote p { color: #dce8c2; }
+
+    .contact {
+      text-align: center;
+    }
+
+    footer {
+      background: #102f25;
+      color: #dce8c2;
+      padding: 38px 10%;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    footer strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      display: block;
+      color: white;
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: 850px) {
+      nav { gap: 12px; font-size: 11px; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      header { padding: 16px 5%; align-items: flex-start; }
+      .brand { font-size: 24px; }
+      nav { flex-wrap: wrap; justify-content: flex-end; max-width: 210px; }
+      .hero { min-height: 620px; padding: 130px 7% 80px; }
+      section { padding: 65px 7%; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="brand">
+    BIOMA
+    <small>CIENCIA · NATURALEZA · INNOVACIÓN</small>
+  </a>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#investigacion">Investigación</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="eyebrow">Investigación científica · Cusco, Perú</div>
+      <h1>Exploramos la biodiversidad, transformamos el conocimiento.</h1>
+      <p>
+        Promovemos la investigación en bioprospección y microbiología
+        ambiental, conectando la ciencia con los desafíos de nuestro entorno.
+      </p>
+      <a href="#nosotros" class="button">Conoce BIOMA</a>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="intro">
+      <div class="section-label">Quiénes somos</div>
+      <h2>Ciencia que conecta con la naturaleza</h2>
+      <p>
+        BIOMA es un espacio orientado a la investigación científica,
+        la formación académica y la generación de conocimiento en
+        bioprospección y microbiología ambiental.
+        Desde una perspectiva interdisciplinaria, buscamos contribuir
+        al conocimiento y valoración de la biodiversidad y los recursos
+        naturales.
+      </p>
+    </div>
+  </section>
+
+  <section class="research" id="investigacion">
+    <div class="research-header">
+      <div class="section-label">Nuestro enfoque</div>
+      <h2>Líneas de investigación</h2>
+      <p>
+        Exploramos la diversidad biológica y sus posibilidades
+        de aplicación científica y ambiental.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="research-card">
+        <span>🧫</span>
+        <h3>Microbiología ambiental</h3>
+        <p>Estudio de microorganismos y sus interacciones con el ambiente.</p>
+      </article>
+
+      <article class="research-card">
+        <span>🌱</span>
+        <h3>Bioprospección</h3>
+        <p>Exploración de la biodiversidad y su potencial biológico.</p>
+      </article>
+
+      <article class="research-card">
+        <span>💧</span>
+        <h3>Biotecnología ambiental</h3>
+        <p>Investigación de alternativas biológicas para desafíos ambientales.</p>
+      </article>
+
+      <article class="research-card">
+        <span>⛰️</span>
+        <h3>Biodiversidad y ecosistemas</h3>
+        <p>Conocimiento y valoración de los ecosistemas y recursos naturales.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="quote">
+    <div class="section-label">Nuestra esencia</div>
+    <h2>Investigar para comprender. Conocer para transformar.</h2>
+    <p>Ciencia, biodiversidad e innovación desde los Andes.</p>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="section-label">Conectemos</div>
+    <h2>Construyamos conocimiento juntos</h2>
+    <p>Para consultas y comunicaciones institucionales:</p>
+    <p><strong>bioma@gmail.com</strong></p>
+  </section>
+</main>
+
+<footer>
+  <strong>BIOMA</strong>
+  Centro de Investigación en Bioprospección y Microbiología Ambiental
+  <p>© 2026 BIOMA · Cusco, Perú</p>
+</footer>
+
+</body>
+</html>
