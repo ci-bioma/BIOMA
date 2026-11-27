@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -72,14 +71,17 @@
     .research-card h3{font-size:20px;line-height:1.3;color:var(--forest);margin-bottom:9px}
     .research-card p{font-size:13px;color:var(--muted)}
 
-    .contact{text-align:center;background:#f0f3eb;color:#243d2c;padding:72px 10% 78px}
+    .contact{text-align:center;background:#f0f3eb;color:#243d2c;padding:58px 10% 64px}
     .contact .section-label{color:#476247}
     .contact h2{color:#243d2c}
-    .contact p{color:#526454;margin:7px 0}
-    .social-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px;max-width:620px;margin:20px auto 0;text-align:left;padding:0}
-    .social-links p{display:flex;align-items:center;gap:9px;margin:0!important;color:#344a37;padding:10px 0}
-    .social-links strong{min-width:75px;color:#344a37}
-    .social-links a{color:#344a37;text-decoration:none}
+    .contact-intro{max-width:780px;margin:0 auto 24px}
+    .contact-intro p{color:#526454;margin:7px 0}
+    .social-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px;max-width:760px;margin:24px auto 0;text-align:left;padding:0}
+    .social-links .contact-item{display:flex;align-items:center;gap:13px;margin:0!important;color:#344a37;background:#e4eadf;padding:17px 18px;border-radius:5px;min-width:0}
+    .contact-icon{font-size:23px;flex:0 0 28px;text-align:center}
+    .contact-item div{min-width:0}
+    .contact-item strong{display:block;color:#344a37;font-size:13px;margin-bottom:2px}
+    .contact-item a,.contact-item span{display:block;color:#344a37;font-size:13px;overflow-wrap:anywhere}
     .social-links a:hover{text-decoration:underline}
 
     .quote{background:var(--forest);color:white;text-align:center;padding:70px 10%}
@@ -219,17 +221,18 @@
     </div>
   </section>
 
-  <!-- CONTACTO Y REDES -->
+  <!-- CONTACTOS -->
   <section class="contact" id="contacto">
-    <div class="section-label">Contacto y redes</div>
-    <h2>Sigamos construyendo conocimiento.</h2>
-    <p>Conoce nuestro trabajo, síguenos y acompáñanos en el desarrollo de la investigación científica en bioprospección y microbiología ambiental.</p>
-
+    <div class="contact-intro">
+      <div class="section-label">Contactos</div>
+      <h2>Sigamos construyendo conocimiento.</h2>
+      <p>Conoce nuestro trabajo, síguenos y acompáñanos en el desarrollo de la investigación científica en bioprospección y microbiología ambiental.</p>
+    </div>
     <div class="social-links">
-      <p><strong>Gmail</strong><a href="mailto:centro.investigacion.bioma@gmail.com">centro.investigacion.bioma@gmail.com</a></p>
-      <p><strong>Facebook</strong><span>Centro de Investigación BIOMA</span></p>
-      <p><strong>Instagram</strong><a href="https://instagram.com/ci_bioma" target="_blank" rel="noopener">@ci_bioma</a></p>
-      <p><strong>Twitter (X)</strong><a href="https://x.com/CI_BIOMA" target="_blank" rel="noopener">@CI_BIOMA</a></p>
+      <div class="contact-item"><span class="contact-icon" aria-hidden="true">✉</span><div><strong>Correo electrónico</strong><a href="mailto:centro.investigacion.bioma@gmail.com">centro.investigacion.bioma@gmail.com</a></div></div>
+      <div class="contact-item"><span class="contact-icon" aria-hidden="true">f</span><div><strong>Facebook</strong><span>Centro de Investigación BIOMA</span></div></div>
+      <div class="contact-item"><span class="contact-icon" aria-hidden="true">◎</span><div><strong>Instagram</strong><a href="https://instagram.com/ci_bioma" target="_blank" rel="noopener">@ci_bioma</a></div></div>
+      <div class="contact-item"><span class="contact-icon" aria-hidden="true">𝕏</span><div><strong>X (Twitter)</strong><a href="https://x.com/CI_BIOMA" target="_blank" rel="noopener">@CI_BIOMA</a></div></div>
     </div>
   </section>
 
