@@ -8,136 +8,721 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=DM+Serif+Display:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    :root{--forest:#164b35;--deep:#102f25;--green:#397653;--sage:#dce8c2;--cream:#f6f3e9;--earth:#80500c;--ink:#24372c;--muted:#657368;--teal:#009f98;--white:#fff}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;scroll-padding-top:95px}
-    body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--cream);line-height:1.7}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
-    h1,h2,h3{font-family:'DM Serif Display',serif;font-weight:600}
-
-    header{position:absolute;top:0;left:0;width:100%;z-index:5;padding:12px 7%;display:flex;align-items:center;justify-content:space-between;gap:30px;border-bottom:1px solid #ffffff35;color:white}
-    .brand{display:flex;align-items:center;gap:16px;min-width:0}
-    .brand img{width:112px;height:112px;object-fit:contain;flex-shrink:0}
-    .brand-text{line-height:1.25;display:flex;flex-direction:column;justify-content:center}
-    .brand-name{font-family:'DM Serif Display',serif;font-size:42px;letter-spacing:3px;font-weight:700}
-    .brand-descriptor{display:block;max-width:340px;color:#e3eadf;font-size:12px;letter-spacing:.6px;line-height:1.5}
-
-    nav{display:flex;gap:23px;align-items:center;font-size:13px;font-weight:500}
-    nav a{transition:color .25s}
-    nav a:hover{color:var(--sage)}
-    .menu-toggle{display:none;background:transparent;border:1px solid #ffffff70;color:white;border-radius:4px;padding:6px 10px;font-size:20px;cursor:pointer}
-
-    .hero{min-height:680px;display:flex;align-items:center;padding:155px 10% 100px;color:white;background:linear-gradient(90deg,#102f25ed 0%,#102f2590 55%,#102f2540 100%),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat}
-    .hero-inner{max-width:750px}
-    .eyebrow,.section-label{text-transform:uppercase;letter-spacing:2.6px;font-size:11px;font-weight:700}
-    .eyebrow{color:var(--sage);margin-bottom:20px}
-    .hero h1{font-size:clamp(42px,6vw,72px);line-height:1.08;max-width:850px}
-    .hero p{margin:25px 0 32px;max-width:570px;color:#e8eee7;font-size:16px}
-    .button{display:inline-block;background:var(--sage);color:var(--forest);padding:12px 23px;border-radius:2px;font-size:13px;font-weight:700;transition:transform .25s,background .25s}
-    .button:hover{transform:translateY(-2px);background:#fff}
-
-    section{padding:85px 10%}
-    .section-label{color:var(--green)}
-    h2{color:var(--forest);font-size:clamp(30px,4vw,43px);line-height:1.2;margin:12px 0 20px}
-    .intro{text-align:center;max-width:800px;margin:auto}
-    .intro p,.section-copy{color:var(--muted);font-size:15px}
-    .about{background:var(--cream)}
-
-    .institutional{background:#f6f3e9}
-    .institutional-header{max-width:720px;margin-bottom:34px}
-    .institutional-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-    .institutional-card{background:#eaeedf;padding:30px 25px;border-top:3px solid var(--green)}
-    .institutional-mark{font-size:12px;letter-spacing:2px;color:var(--green);font-weight:700}
-    .institutional-card h3{font-size:25px;color:var(--forest);margin:10px 0 14px}
-    .institutional-card p,.objective p{font-size:14px;color:var(--muted)}
-    .objective{margin-top:38px;padding:36px;background:var(--forest);color:white}
-    .objective h2{color:white}
-    .objective p{color:#e5eee2;font-size:15px;max-width:900px}
-    .objective .section-label{color:var(--sage)}
-
-
-    .creation{margin-top:38px;padding:32px;background:#eaeedf;border-left:3px solid var(--green)}
-    .creation h2{font-size:30px;margin:10px 0 14px}
-    .creation p{color:var(--muted);font-size:14px;margin:10px 0}
-    .ods{background:#f6f3e9}
-    .ods-header{max-width:800px;margin-bottom:32px}
-    .ods-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-    .ods-card{display:flex;flex-direction:column;gap:12px;background:#fff;padding:16px;border-radius:4px;min-width:0}
-    .ods-card img{width:100%;max-width:150px;aspect-ratio:1;object-fit:contain;margin:0 auto}
-    .ods-card h3{font-size:18px;color:var(--forest);line-height:1.3}
-    .ods-card p{font-size:13px;color:var(--muted)}
-
-    .team{background:#eaeedf}
-    .team-inner{max-width:800px;margin:auto;text-align:center}
-    .team-inner p{color:var(--muted);margin-bottom:22px}
-    .team-note{font-size:13px;color:var(--green);margin-top:15px}
-
-    .research{background:#eaeedf}
-    .research-header{max-width:720px;margin-bottom:35px}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-    .research-card{background:var(--cream);padding:27px 22px 25px;min-height:230px;border-bottom:3px solid var(--green);transition:transform .25s}
-    .research-card:hover{transform:translateY(-4px)}
-    .card-icon{font-size:29px;margin-bottom:14px}
-    .research-card h3{font-size:20px;line-height:1.3;color:var(--forest);margin-bottom:9px}
-    .research-card p{font-size:13px;color:var(--muted)}
-
-    .contact{text-align:center;background:#f0f3eb;color:#243d2c;padding:58px 10% 64px}
-    .contact .section-label{color:#476247}
-    .contact h2{color:#243d2c}
-    .contact-intro{max-width:780px;margin:0 auto 24px}
-    .contact-intro p{color:#526454;margin:7px 0}
-    .social-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px;max-width:760px;margin:24px auto 0;text-align:left;padding:0}
-    .social-links .contact-item{display:flex;align-items:center;gap:13px;margin:0!important;color:#344a37;background:#e4eadf;padding:17px 18px;border-radius:5px;min-width:0}
-    .contact-icon{font-size:23px;flex:0 0 28px;text-align:center}
-    .contact-item div{min-width:0}
-    .contact-item strong{display:block;color:#344a37;font-size:13px;margin-bottom:2px}
-    .contact-item a,.contact-item span{display:block;color:#344a37;font-size:13px;overflow-wrap:anywhere}
-    .social-links a:hover{text-decoration:underline}
-
-    .quote{background:var(--forest);color:white;text-align:center;padding:70px 10%}
-    .quote h2{color:white;margin:14px 0}
-    .quote .section-label{color:#c8d9b0}
-    .quote p{color:var(--sage)}
-
-    footer{background:var(--deep);color:var(--sage);padding:38px 10%;text-align:center;font-size:13px}
-    .footer-brand{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;margin-bottom:16px}
-    .footer-brand img{width:145px;height:145px;object-fit:contain}
-    .footer-brand strong{font-family:'DM Serif Display',serif;font-size:36px;color:white;letter-spacing:3px}
-    .footer-descriptor{max-width:650px;margin:0 auto;font-size:15px;line-height:1.6}
-    .footer-tagline{margin-top:8px;color:#c5d5bb}
-    .copyright{margin-top:22px;font-size:12px;color:#b8c9b5}
-
-    @media(max-width:1000px){
-      header{padding:16px 5%}
-      nav{gap:14px;font-size:12px}
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .institutional-grid{grid-template-columns:1fr}
+    :root{
+      --forest:#164b35;
+      --deep:#102f25;
+      --green:#397653;
+      --sage:#dce8c2;
+      --cream:#f6f3e9;
+      --earth:#80500c;
+      --ink:#24372c;
+      --muted:#657368;
+      --teal:#009f98;
+      --white:#fff;
     }
 
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:95px;
+    }
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      color:var(--ink);
+      background:var(--cream);
+      line-height:1.7;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    h1,h2,h3{
+      font-family:'DM Serif Display',serif;
+      font-weight:600;
+    }
+
+    header{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:5;
+      padding:12px 7%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+      border-bottom:1px solid #ffffff35;
+      color:white;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:112px;
+      height:112px;
+      object-fit:contain;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      line-height:1.25;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .brand-name{
+      font-family:'DM Serif Display',serif;
+      font-size:42px;
+      letter-spacing:3px;
+      font-weight:700;
+    }
+
+    .brand-descriptor{
+      display:block;
+      max-width:340px;
+      color:#e3eadf;
+      font-size:12px;
+      letter-spacing:.6px;
+      line-height:1.5;
+    }
+
+    nav{
+      display:flex;
+      gap:23px;
+      align-items:center;
+      font-size:13px;
+      font-weight:500;
+    }
+
+    nav a{
+      transition:color .25s;
+    }
+
+    nav a:hover{
+      color:var(--sage);
+    }
+
+    .menu-toggle{
+      display:none;
+      background:transparent;
+      border:1px solid #ffffff70;
+      color:white;
+      border-radius:4px;
+      padding:6px 10px;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .hero{
+      min-height:680px;
+      display:flex;
+      align-items:center;
+      padding:155px 10% 100px;
+      color:white;
+      background:linear-gradient(90deg,#102f25ed 0%,#102f2590 55%,#102f2540 100%),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat;
+    }
+
+    .hero-inner{
+      max-width:750px;
+    }
+
+    .eyebrow,.section-label{
+      text-transform:uppercase;
+      letter-spacing:2.6px;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .eyebrow{
+      color:var(--sage);
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-size:clamp(42px,6vw,72px);
+      line-height:1.08;
+      max-width:850px;
+    }
+
+    .hero p{
+      margin:25px 0 32px;
+      max-width:570px;
+      color:#e8eee7;
+      font-size:16px;
+    }
+
+    .button{
+      display:inline-block;
+      background:var(--sage);
+      color:var(--forest);
+      padding:12px 23px;
+      border-radius:2px;
+      font-size:13px;
+      font-weight:700;
+      transition:transform .25s,background .25s;
+    }
+
+    .button:hover{
+      transform:translateY(-2px);
+      background:#fff;
+    }
+
+    section{
+      padding:85px 10%;
+    }
+
+    .section-label{
+      color:var(--green);
+    }
+
+    h2{
+      color:var(--forest);
+      font-size:clamp(30px,4vw,43px);
+      line-height:1.2;
+      margin:12px 0 20px;
+    }
+
+    .intro{
+      text-align:center;
+      max-width:800px;
+      margin:auto;
+    }
+
+    .intro p,.section-copy{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .about{
+      background:var(--cream);
+    }
+
+    .institutional{
+      background:#f6f3e9;
+    }
+
+    .institutional-header{
+      max-width:720px;
+      margin-bottom:34px;
+    }
+
+    .institutional-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .institutional-card{
+      background:#eaeedf;
+      padding:30px 25px;
+      border-top:3px solid var(--green);
+    }
+
+    .institutional-mark{
+      font-size:12px;
+      letter-spacing:2px;
+      color:var(--green);
+      font-weight:700;
+    }
+
+    .institutional-card h3{
+      font-size:25px;
+      color:var(--forest);
+      margin:10px 0 14px;
+    }
+
+    .institutional-card p,.objective p{
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .objective{
+      margin-top:38px;
+      padding:36px;
+      background:var(--forest);
+      color:white;
+    }
+
+    .objective h2{
+      color:white;
+    }
+
+    .objective p{
+      color:#e5eee2;
+      font-size:15px;
+      max-width:900px;
+    }
+
+    .objective .section-label{
+      color:var(--sage);
+    }
+
+    .creation{
+      margin-top:38px;
+      padding:32px;
+      background:#eaeedf;
+      border-left:3px solid var(--green);
+    }
+
+    .creation h2{
+      font-size:30px;
+      margin:10px 0 14px;
+    }
+
+    .creation p{
+      color:var(--muted);
+      font-size:14px;
+      margin:10px 0;
+    }
+
+    /* ODS */
+
+    .ods{
+      background:#f6f3e9;
+    }
+
+    .ods-header{
+      max-width:800px;
+      margin-bottom:32px;
+    }
+
+    .ods-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .ods-card{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      background:#fff;
+      padding:16px;
+      border-radius:4px;
+      min-width:0;
+    }
+
+    .ods-card img{
+      width:100%;
+      max-width:150px;
+      aspect-ratio:1;
+      object-fit:contain;
+      margin:0 auto;
+    }
+
+    .ods-card h3{
+      font-size:18px;
+      color:var(--forest);
+      line-height:1.3;
+      overflow-wrap:break-word;
+    }
+
+    .ods-card p{
+      font-size:13px;
+      color:var(--muted);
+      overflow-wrap:break-word;
+    }
+
+    /* IDENTIDAD */
+
+    .team{
+      background:#eaeedf;
+    }
+
+    .team-inner{
+      max-width:800px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .team-inner p{
+      color:var(--muted);
+      margin-bottom:22px;
+    }
+
+    .team-note{
+      font-size:13px;
+      color:var(--green);
+      margin-top:15px;
+    }
+
+    /* INVESTIGACIÓN */
+
+    .research{
+      background:#eaeedf;
+    }
+
+    .research-header{
+      max-width:720px;
+      margin-bottom:35px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .research-card{
+      background:var(--cream);
+      padding:27px 22px 25px;
+      min-height:230px;
+      border-bottom:3px solid var(--green);
+      transition:transform .25s;
+    }
+
+    .research-card:hover{
+      transform:translateY(-4px);
+    }
+
+    .card-icon{
+      font-size:29px;
+      margin-bottom:14px;
+    }
+
+    .research-card h3{
+      font-size:20px;
+      line-height:1.3;
+      color:var(--forest);
+      margin-bottom:9px;
+    }
+
+    .research-card p{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* CONTACTOS */
+
+    .contact{
+      text-align:center;
+      background:#f0f3eb;
+      color:#243d2c;
+      padding:58px 10% 64px;
+    }
+
+    .contact .section-label{
+      color:#476247;
+    }
+
+    .contact h2{
+      color:#243d2c;
+    }
+
+    .contact-intro{
+      max-width:780px;
+      margin:0 auto 24px;
+    }
+
+    .contact-intro p{
+      color:#526454;
+      margin:7px 0;
+    }
+
+    .social-links{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px 24px;
+      max-width:760px;
+      margin:24px auto 0;
+      text-align:left;
+      padding:0;
+    }
+
+    .social-links .contact-item{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      margin:0!important;
+      color:#344a37;
+      background:#e4eadf;
+      padding:17px 18px;
+      border-radius:5px;
+      min-width:0;
+    }
+
+    .contact-icon{
+      font-size:23px;
+      flex:0 0 28px;
+      text-align:center;
+    }
+
+    .contact-item div{
+      min-width:0;
+    }
+
+    .contact-item strong{
+      display:block;
+      color:#344a37;
+      font-size:13px;
+      margin-bottom:2px;
+    }
+
+    .contact-item a,.contact-item span{
+      display:block;
+      color:#344a37;
+      font-size:13px;
+      overflow-wrap:anywhere;
+    }
+
+    .social-links a:hover{
+      text-decoration:underline;
+    }
+
+    /* NUESTRA ESENCIA */
+
+    .quote{
+      background:var(--forest);
+      color:white;
+      text-align:center;
+      padding:70px 10%;
+    }
+
+    .quote h2{
+      color:white;
+      margin:14px 0;
+    }
+
+    .quote .section-label{
+      color:#c8d9b0;
+    }
+
+    .quote p{
+      color:var(--sage);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:var(--deep);
+      color:var(--sage);
+      padding:38px 10%;
+      text-align:center;
+      font-size:13px;
+    }
+
+    .footer-brand{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin-bottom:16px;
+    }
+
+    .footer-brand img{
+      width:145px;
+      height:145px;
+      object-fit:contain;
+    }
+
+    .footer-brand strong{
+      font-family:'DM Serif Display',serif;
+      font-size:36px;
+      color:white;
+      letter-spacing:3px;
+    }
+
+    .footer-descriptor{
+      max-width:650px;
+      margin:0 auto;
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .footer-tagline{
+      margin-top:8px;
+      color:#c5d5bb;
+    }
+
+    .copyright{
+      margin-top:22px;
+      font-size:12px;
+      color:#b8c9b5;
+    }
+
+    /* TABLET */
+
+    @media(max-width:1000px){
+      header{
+        padding:16px 5%;
+      }
+
+      nav{
+        gap:14px;
+        font-size:12px;
+      }
+
+      .grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .institutional-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* CELULAR */
+
     @media(max-width:680px){
-      .menu-toggle{display:block;align-self:flex-end}
-      nav{display:none;flex-direction:column;align-items:flex-start;gap:12px;width:100%;padding:8px 0}
-      nav.open{display:flex}
-      .contact{padding:58px 7% 62px}
-      .social-links{grid-template-columns:1fr;gap:5px;max-width:480px}
-      .social-links p{padding:6px 0}
-      header{flex-direction:column;align-items:flex-start;gap:14px;padding:12px 6%}
-      .brand{align-items:center;gap:12px}
-      .brand img{width:88px;height:88px;object-fit:contain;flex-shrink:0}
-      .brand-name{font-size:32px}
-      .brand-descriptor{font-size:10px;max-width:260px}
-      nav{width:100%;flex-wrap:wrap;gap:14px;font-size:12px}
-      .hero{min-height:650px;padding:180px 7% 75px}
-      section{padding:62px 7%}
-      .grid{grid-template-columns:1fr}\n      .ods-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n      .ods-card{padding:12px}\n      .ods-card h3{font-size:15px}\n      .creation{padding:24px}
-      .research-card{min-height:auto}
-      .quote{padding:60px 7%}
-      footer{padding:38px 7%}
+
+      .menu-toggle{
+        display:block;
+        align-self:flex-end;
+      }
+
+      nav{
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+        width:100%;
+        padding:8px 0;
+      }
+
+      nav.open{
+        display:flex;
+      }
+
+      .contact{
+        padding:58px 7% 62px;
+      }
+
+      .social-links{
+        grid-template-columns:1fr;
+        gap:5px;
+        max-width:480px;
+      }
+
+      .social-links p{
+        padding:6px 0;
+      }
+
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+        padding:12px 6%;
+      }
+
+      .brand{
+        align-items:center;
+        gap:12px;
+      }
+
+      .brand img{
+        width:88px;
+        height:88px;
+        object-fit:contain;
+        flex-shrink:0;
+      }
+
+      .brand-name{
+        font-size:32px;
+      }
+
+      .brand-descriptor{
+        font-size:10px;
+        max-width:260px;
+      }
+
+      nav{
+        width:100%;
+        flex-wrap:wrap;
+        gap:14px;
+        font-size:12px;
+      }
+
+      .hero{
+        min-height:650px;
+        padding:180px 7% 75px;
+      }
+
+      section{
+        padding:62px 7%;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      /* ODS: UNA COLUMNA EN CELULAR */
+
+      .ods-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+        width:100%;
+      }
+
+      .ods-card{
+        width:100%;
+        min-width:0;
+        padding:20px;
+      }
+
+      .ods-card img{
+        width:120px;
+        max-width:100%;
+        aspect-ratio:1;
+        object-fit:contain;
+        margin:0 auto;
+      }
+
+      .ods-card h3{
+        font-size:20px;
+        line-height:1.4;
+        overflow-wrap:break-word;
+        word-break:normal;
+      }
+
+      .ods-card p{
+        font-size:14px;
+        line-height:1.8;
+        overflow-wrap:break-word;
+        word-break:normal;
+      }
+
+      .creation{
+        padding:24px;
+      }
+
+      .research-card{
+        min-height:auto;
+      }
+
+      .quote{
+        padding:60px 7%;
+      }
+
+      footer{
+        padding:38px 7%;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -163,6 +748,7 @@
 <main>
 
   <!-- INICIO -->
+
   <section class="hero" id="inicio">
     <div class="hero-inner">
       <h1>Exploramos la biodiversidad, transformamos el conocimiento.</h1>
@@ -172,6 +758,7 @@
   </section>
 
   <!-- NOSOTROS -->
+
   <section class="institutional" id="nosotros">
     <div class="institutional-header">
       <div class="section-label">Nosotros</div>
@@ -180,6 +767,7 @@
     </div>
 
     <div class="institutional-grid">
+
       <article class="institutional-card">
         <div class="institutional-mark">01</div>
         <h3>Misión</h3>
@@ -191,6 +779,7 @@
         <h3>Visión</h3>
         <p>Consolidarnos como un espacio académico y científico de referencia en bioprospección y microbiología ambiental en la región Cusco, reconocido por la calidad de su producción científica, la formación de nuevos investigadores y su aporte a la solución de desafíos ambientales, comprometido con una ciencia abierta, transparente y reproducible, con una comunidad activa y articulada en redes de cooperación con universidades y centros de investigación.</p>
       </article>
+
     </div>
 
     <div class="objective">
@@ -198,33 +787,74 @@
       <h2>Objetivo general</h2>
       <p>Fortalecer la investigación científica en Bioprospección y Microbiología Ambiental mediante la generación de conocimiento, el desarrollo de proyectos y la formación progresiva de investigadores, para comprender la diversidad microbiana, sus funciones e interacciones, y explorar su potencial biotecnológico.</p>
     </div>
+
     <div class="creation">
       <div class="section-label">Nuestro origen</div>
       <h2>El comienzo de BIOMA</h2>
       <p><strong>10 de noviembre de 2026</strong> · En conmemoración del Día Mundial de la Ciencia para la Paz y el Desarrollo, BIOMA nace como una iniciativa orientada a promover la investigación científica en bioprospección y microbiología ambiental.</p>
       <p>Inspirados en el valor de la ciencia como herramienta para comprender nuestro entorno y contribuir al desarrollo sostenible, buscamos construir un espacio de aprendizaje, investigación, colaboración y generación de conocimiento, con una mirada desde los Andes hacia nuevos horizontes científicos.</p>
     </div>
+
   </section>
 
   <!-- CIENCIA CON PROPÓSITO -->
+
   <section class="ods" id="ods">
     <div class="ods-header">
       <div class="section-label">Ciencia con propósito</div>
       <h2>Nuestro compromiso con un futuro sostenible</h2>
       <p class="section-copy">La orientación de BIOMA se relaciona con los Objetivos de Desarrollo Sostenible de la Agenda 2030. Esta articulación busca orientar nuestras actividades y proyectos hacia necesidades científicas, ambientales y sociales.</p>
     </div>
+
     <div class="ods-grid">
-      <article class="ods-card"><img src="assets/ods-04.png" alt="ODS 4"><h3>ODS 4 · Educación de calidad</h3><p>Formación de estudiantes investigadores, desarrollo de competencias científicas y difusión del conocimiento.</p></article>
-      <article class="ods-card"><img src="assets/ods-06.png" alt="ODS 6"><h3>ODS 6 · Agua limpia y saneamiento</h3><p>Investigación de microorganismos relacionados con la calidad del agua y posibles procesos de biorremediación.</p></article>
-      <article class="ods-card"><img src="assets/ods-09.png" alt="ODS 9"><h3>ODS 9 · Industria, innovación e infraestructura</h3><p>Investigación, innovación y exploración de aplicaciones biotecnológicas de recursos microbianos.</p></article>
-      <article class="ods-card"><img src="assets/ods-12.png" alt="ODS 12"><h3>ODS 12 · Producción y consumo responsables</h3><p>Estudio de alternativas biotecnológicas que favorezcan el aprovechamiento sostenible de recursos biológicos.</p></article>
-      <article class="ods-card"><img src="assets/ods-13.png" alt="ODS 13"><h3>ODS 13 · Acción por el clima</h3><p>Investigación de microorganismos y procesos ecológicos vinculados con la respuesta y adaptación de los ecosistemas frente a cambios ambientales.</p></article>
-      <article class="ods-card"><img src="assets/ods-15.png" alt="ODS 15"><h3>ODS 15 · Vida de ecosistemas terrestres</h3><p>Estudio, conocimiento y conservación de la biodiversidad microbiana y de los ecosistemas terrestres.</p></article>
-      <article class="ods-card"><img src="assets/ods-17.png" alt="ODS 17"><h3>ODS 17 · Alianzas para lograr los objetivos</h3><p>Cooperación científica y académica con universidades, centros de investigación y otras instituciones.</p></article>
+
+      <article class="ods-card">
+        <img src="assets/ods-04.png" alt="ODS 4">
+        <h3>ODS 4 · Educación de calidad</h3>
+        <p>Formación de estudiantes investigadores, desarrollo de competencias científicas y difusión del conocimiento.</p>
+      </article>
+
+      <article class="ods-card">
+        <img src="assets/ods-06.png" alt="ODS 6">
+        <h3>ODS 6 · Agua limpia y saneamiento</h3>
+        <p>Investigación de microorganismos relacionados con la calidad del agua y posibles procesos de biorremediación.</p>
+      </article>
+
+      <article class="ods-card">
+        <img src="assets/ods-09.png" alt="ODS 9">
+        <h3>ODS 9 · Industria, innovación e infraestructura</h3>
+        <p>Investigación, innovación y exploración de aplicaciones biotecnológicas de recursos microbianos.</p>
+      </article>
+
+      <article class="ods-card">
+        <img src="assets/ods-12.png" alt="ODS 12">
+        <h3>ODS 12 · Producción y consumo responsables</h3>
+        <p>Estudio de alternativas biotecnológicas que favorezcan el aprovechamiento sostenible de recursos biológicos.</p>
+      </article>
+
+      <article class="ods-card">
+        <img src="assets/ods-13.png" alt="ODS 13">
+        <h3>ODS 13 · Acción por el clima</h3>
+        <p>Investigación de microorganismos y procesos ecológicos vinculados con la respuesta y adaptación de los ecosistemas frente a cambios ambientales.</p>
+      </article>
+
+      <article class="ods-card">
+        <img src="assets/ods-15.png" alt="ODS 15">
+        <h3>ODS 15 · Vida de ecosistemas terrestres</h3>
+        <p>Estudio, conocimiento y conservación de la biodiversidad microbiana y de los ecosistemas terrestres.</p>
+      </article>
+
+      <article class="ods-card">
+        <img src="assets/ods-17.png" alt="ODS 17">
+        <h3>ODS 17 · Alianzas para lograr los objetivos</h3>
+        <p>Cooperación científica y académica con universidades, centros de investigación y otras instituciones.</p>
+      </article>
+
     </div>
   </section>
 
   <!-- LÍNEAS DE INVESTIGACIÓN -->
+
   <section class="research" id="investigacion">
     <div class="research-header">
       <div class="section-label">Nuestro enfoque</div>
@@ -233,6 +863,7 @@
     </div>
 
     <div class="grid">
+
       <article class="research-card">
         <div class="card-icon">🧫</div>
         <h3>Microbiología ambiental</h3>
@@ -244,34 +875,69 @@
         <h3>Bioprospección</h3>
         <p>Exploración de la biodiversidad en búsqueda de recursos biológicos y potenciales aplicaciones.</p>
       </article>
+
     </div>
   </section>
 
   <!-- NUESTRA IDENTIDAD -->
+
   <section class="team" id="identidad">
     <div class="team-inner">
       <div class="section-label">Nuestra identidad · Formación e investigación</div>
       <h2>La ciencia también se construye en equipo</h2>
       <p>Creemos en la curiosidad, el aprendizaje colaborativo y la formación de estudiantes investigadores. BIOMA busca fomentar espacios donde las ideas, la investigación y el compromiso con la biodiversidad se encuentren.</p>
-           <p class="team-note">Un espacio para aprender, explorar y hacer ciencia.</p>
+      <p class="team-note">Un espacio para aprender, explorar y hacer ciencia.</p>
     </div>
   </section>
+
   <!-- CONTACTOS -->
+
   <section class="contact" id="contacto">
     <div class="contact-intro">
       <div class="section-label">Contactos</div>
       <h2>Sigamos construyendo conocimiento.</h2>
       <p>Conoce nuestro trabajo, síguenos y acompáñanos en el desarrollo de la investigación científica en bioprospección y microbiología ambiental.</p>
     </div>
+
     <div class="social-links">
-      <div class="contact-item"><span class="contact-icon" aria-hidden="true">✉</span><div><strong>Correo electrónico</strong><a href="mailto:centro.investigacion.bioma@gmail.com">centro.investigacion.bioma@gmail.com</a></div></div>
-      <div class="contact-item"><span class="contact-icon" aria-hidden="true">f</span><div><strong>Facebook</strong><span>Centro de Investigación BIOMA</span></div></div>
-      <div class="contact-item"><span class="contact-icon" aria-hidden="true">◎</span><div><strong>Instagram</strong><a href="https://instagram.com/ci_bioma" target="_blank" rel="noopener">@ci_bioma</a></div></div>
-      <div class="contact-item"><span class="contact-icon" aria-hidden="true">𝕏</span><div><strong>X (Twitter)</strong><a href="https://x.com/CI_BIOMA" target="_blank" rel="noopener">@CI_BIOMA</a></div></div>
+
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">✉</span>
+        <div>
+          <strong>Correo electrónico</strong>
+          <a href="mailto:centro.investigacion.bioma@gmail.com">centro.investigacion.bioma@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">f</span>
+        <div>
+          <strong>Facebook</strong>
+          <span>Centro de Investigación BIOMA</span>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">◎</span>
+        <div>
+          <strong>Instagram</strong>
+          <a href="https://instagram.com/ci_bioma" target="_blank" rel="noopener">@ci_bioma</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">𝕏</span>
+        <div>
+          <strong>X (Twitter)</strong>
+          <a href="https://x.com/CI_BIOMA" target="_blank" rel="noopener">@CI_BIOMA</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- NUESTRA ESENCIA -->
+
   <section class="quote">
     <div class="section-label">Nuestra esencia</div>
     <h2>Investigar para comprender.<br>Conocer para transformar.</h2>
@@ -285,6 +951,7 @@
     <img src="logo-bioma.png" alt="Logo de BIOMA">
     <strong>BIOMA</strong>
   </div>
+
   <p class="footer-descriptor">Centro de Investigación en Bioprospección y Microbiología Ambiental</p>
   <p class="footer-tagline">Ciencia · Biodiversidad · Innovación</p>
   <p class="copyright">© 2026 BIOMA · Cusco, Perú</p>
